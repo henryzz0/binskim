@@ -48,15 +48,5 @@ namespace Microsoft.CodeAnalysis.BinaryParsers.ELF
             binary.GetDwarfCompilerCommand().Should().Contain("O2");
             binary.GetLanguage().Should().Be("C11");
         }
-
-        [Fact]
-        public void x()
-        {
-            // Hello.c compiled using: gcc -Wall -O2 -g -gdwarf-5 hello.c -o hello5
-            using var binary = new ELFBinary(new Uri(@"C:\Users\ednakamu\Desktop\mmcli"));
-            binary.GetVersion().Should().Be(5);
-            binary.GetDwarfCompilerCommand().Should().Contain("O2");
-            binary.GetLanguage().Should().Be("C99");
-        }
     }
 }
