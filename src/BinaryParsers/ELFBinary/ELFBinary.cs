@@ -50,7 +50,7 @@ namespace Microsoft.CodeAnalysis.BinaryParsers
 
         public int GetVersion()
         {
-            if (CompilationUnits?.Count == 0)
+            if (CompilationUnits == null || CompilationUnits.Count == 0)
             {
                 return -1;
             }
@@ -60,7 +60,8 @@ namespace Microsoft.CodeAnalysis.BinaryParsers
 
         public string GetDwarfCompilerCommand()
         {
-            if (CompilationUnits?.Count == 0 || DebugStr?.Count == 0)
+            if (CompilationUnits == null || CompilationUnits.Count == 0 ||
+                DebugStr == null || DebugStr.Count == 0)
             {
                 return null;
             }
@@ -79,7 +80,7 @@ namespace Microsoft.CodeAnalysis.BinaryParsers
 
         public string GetLanguage()
         {
-            if (CompilationUnits?.Count == 0)
+            if (CompilationUnits == null || CompilationUnits.Count == 0)
             {
                 return null;
             }

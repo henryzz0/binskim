@@ -31,10 +31,8 @@ namespace Microsoft.CodeAnalysis.BinaryParsers.Dwarf
             var compilationUnitHeader = CompilationUnitHeader.Parse(infoData, ref index, compilationUnitId);
             uint compilationUnitLength = compilationUnitHeader.Length + 4;
 
-            var abbrevListFiltered = abbrevList.Where(a => a.Offset == compilationUnitHeader.AbbrevOffset).ToList();
-            //				var abbrevListFiltered = (from a in abbrevList
-            //				where (long)a.Offset == (long)((ulong)compilationUnith.AbbrevOffset)
-            //				select a).ToList<Abbreviation>();
+            // TODO: hack way to fix offset for dwarf5.
+            var abbrevListFiltered = abbrevList.Where(a => a.Offset == 0).ToList();
 
             var dieList = new List<DebuggingInformationEntry>();
             while (index < compilationUnitId + compilationUnitLength)

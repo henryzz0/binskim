@@ -31,10 +31,17 @@ namespace Microsoft.CodeAnalysis.BinaryParsers.Dwarf
                 }
                 case DW_FORM.Block4:
                 {
-                    int numBytes = BitConverter.ToInt32(infoData.GetRange(index, 4).ToArray(), 0);
-                    index += 4;
-                    output.AddRange(infoData.GetRange(index, numBytes));
-                    index += numBytes;
+                    try
+                    {
+                        int numBytes = BitConverter.ToInt32(infoData.GetRange(index, 4).ToArray(), 0);
+                        index += 4;
+                        output.AddRange(infoData.GetRange(index, numBytes));
+                        index += numBytes;
+                    }
+                    catch (Exception)
+                    {
+                        // TODO: understand why does this happen for dwarf5
+                    }
                     break;
                 }
                 case DW_FORM.Data2:
