@@ -32,6 +32,7 @@ namespace Microsoft.CodeAnalysis.BinaryParsers.Dwarf
             uint compilationUnitLength = compilationUnitHeader.Length + 4;
 
             // TODO: hack way to fix offset for dwarf5.
+            // This should be compilationUnitHeader.AbbrevOffset
             var abbrevListFiltered = abbrevList.Where(a => a.Offset == 0).ToList();
 
             var dieList = new List<DebuggingInformationEntry>();
