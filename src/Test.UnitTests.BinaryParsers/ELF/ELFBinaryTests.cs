@@ -14,7 +14,7 @@ namespace Microsoft.CodeAnalysis.BinaryParsers.ELF
         [Fact]
         public void Load()
         {
-            string filename = @"C:\Microsoft\wsl\hello4";
+            string filename = @"C:\Microsoft\drops\2020-03-23\retail\amd64\Polybase\jre\lib\security\cacerts";
             var binary = new ELFBinary(new Uri(filename));
             var version = binary.GetVersion();
             var command = binary.GetDwarfCompilerCommand();
